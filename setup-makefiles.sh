@@ -45,13 +45,16 @@ write_makefiles "$MY_DIR"/proprietary-files-product.txt
 write_footers
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$HAVOC_ROOT"
+INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
+setup_vendor "${DEVICE}" "${VENDOR}" "${HAVOC_ROOT}" false
 
 # Copyright headers and guards
 write_headers
 
-for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files*.txt; do
-    write_makefiles $BLOB_LIST
+for BLOB_LIST in "${MY_DIR}"/../"${DEVICE}"/proprietary-files*.txt; do
+    # The standard device blobs
+    write_makefiles "${BLOB_LIST}" true
 done
 
+# Finish
 write_footers

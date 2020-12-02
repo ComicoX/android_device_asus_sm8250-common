@@ -31,17 +31,27 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+# Properties
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
+
 # A/B
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
+    odm \
     product \
     recovery \
     system \
     vbmeta \
-    vbmeta_system
+    vbmeta_system \
+    vendor
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -60,11 +70,20 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.kona.recovery
+    android.hardware.boot@1.0-service \
+    bootctrl.kona.recovery \
+    bootctrl.kona
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
+
+# Common init scripts
+PRODUCT_PACKAGES += \
+    init.qcom.rc \
+    init.recovery.qcom.rc \
+    fstab.qcom
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
@@ -76,19 +95,36 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libdisplayconfig \
+    android.hardware.graphics.mapper@3.0-impl-qti-display \
+    vendor.qti.hardware.display.allocator-service \
+    vendor.qti.hardware.display.composer-service \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    gralloc.kona \
+    memtrack.kona \
     libqdMetaData \
-    libqdMetaData.system \
-    vendor.display.config@1.12 \
-    libion \
-    libtinyxml2
+    libdisplayconfig.vendor \
+    vendor.display.config@1.0.vendor \
+    vendor.display.config@1.1.vendor \
+    vendor.display.config@1.2.vendor \
+    vendor.display.config@1.3.vendor \
+    vendor.display.config@1.4.vendor \
+    vendor.display.config@1.5.vendor \
+    vendor.display.config@1.6.vendor \
+    vendor.display.config@1.7.vendor \
+    vendor.display.config@1.8.vendor \
+    vendor.display.config@1.9.vendor \
+    vendor.display.config@1.10.vendor \
+    vendor.display.config@1.11.vendor \
+    vendor.display.config@1.12.vendor \
+    vendor.display.config@1.13.vendor \
+    vendor.display.config@1.14.vendor \
+    vendor.display.config@1.15.vendor \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0.vendor
 
 PRODUCT_PACKAGES += \
-    libtinyalsa
-
-# Exclude vibrator from InputManager
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    vendor.display.config@1.12
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -125,6 +161,27 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
+# Omx
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor \
+    libmm-omxcore \
+    libOmxCore \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxG711Enc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libstagefrighthw
+
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2-service-qti
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
@@ -140,8 +197,11 @@ PRODUCT_PACKAGES += \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
-    qti_telephony_utils.xml \
-    tcmiface
+    qti_telephony_utils.xml
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -159,9 +219,20 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 29
+# Vibrator
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/excluded-input-devices.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/excluded-input-devices.xml
 
-# WiFi Display
+# Wifi
 PRODUCT_PACKAGES += \
-    libnl
+    android.hardware.wifi@1.0-service \
+    hostapd \
+    libwpa_client \
+    libwifi-hal-ctrl \
+    libwifi-hal-qcom \
+    vendor.qti.hardware.wifi.hostapd@1.0.vendor \
+    vendor.qti.hardware.wifi.hostapd@1.1.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.1.vendor \
+    wpa_supplicant \
+    wpa_supplicant.conf

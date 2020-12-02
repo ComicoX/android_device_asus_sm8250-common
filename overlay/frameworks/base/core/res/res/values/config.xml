@@ -443,4 +443,6 @@
     <!-- Is the device capable of hot swapping an ICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
+    <!-- Telephony qualified networks service package name to bind to by default. -->
+    <string name="config_qualified_networks_service_package">vendor.qti.iwlan</string>
 </resources>

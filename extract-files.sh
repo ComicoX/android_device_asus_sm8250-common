@@ -54,10 +54,16 @@ extract "$MY_DIR"/proprietary-files-product.txt "$SRC"
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$HAVOC_ROOT"
-
-for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files*.txt; do
-    extract $BLOB_LIST "$SRC"
+source "${MY_DIR}/../${DEVICE}/extract-files.sh"
+setup_vendor "${DEVICE}" "${VENDOR}" "${HAVOC_ROOT}" false "${CLEAN_VENDOR}"
+for BLOB_LIST in "${MY_DIR}"/../"${DEVICE}"/proprietary-files*.txt; do
+    extract "${BLOB_LIST}" "${SRC}" \
+            "${KANG}" --section "${SECTION}"
 done
+
+COMMON_BLOB_ROOT="${HAVOC_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
+
+sed -i 's/<library name="android.hidl.manager-V1.0-java"/<library name="android.hidl.manager@1.0-java"/g' \
+        "${COMMON_BLOB_ROOT}/etc/permissions/qti_libpermissions.xml"
 
 "$MY_DIR"/setup-makefiles.sh
