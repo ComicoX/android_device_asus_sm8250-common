@@ -1,0 +1,25 @@
+[
+  {
+    "remote": "havoc",
+    "repository": "android_device_qcom_sepolicy",
+    "target_path": "device/qcom/sepolicy",
+    "revision": "eleven"
+  {
+    "remote": "https://github.com/ComicoTeam/",
+    "repository": "android_kernel_asus_tequila",
+    "target_path": "kernel/asus/tequila",
+    "revision": "Havoc-Eleven"
+  },
+  {
+     "remote": "havoc",
+     "repository": "android_hardware_qcom_fm",
+     "target_path": "vendor/qcom/opensource/fm-commonsys",
+     "revision": "ten"
+   },
+   {
+    "remote": "havoc",
+    "repository": "android_packages_apps_Bluetooth",
+    "target_path": "vendor/qcom/opensource/commonsys/packages/apps/Bluetooth",
+    "revision": "eleven"
+  }
+]
