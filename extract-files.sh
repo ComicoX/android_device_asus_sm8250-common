@@ -22,9 +22,9 @@ set -e
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-OMNI_ROOT="$MY_DIR"/../../..
+HAVOC_ROOT="$MY_DIR"/../../..
 
-HELPER="${OMNI_ROOT}"/vendor/omni/build/tools/extract_utils.sh
+HELPER="${HAVOC_ROOT}"/vendor/havoc/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -48,13 +48,13 @@ else
 fi
 
 # Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$OMNI_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$HAVOC_ROOT" true
 
 extract "$MY_DIR"/proprietary-files-product.txt "$SRC"
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$OMNI_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$HAVOC_ROOT"
 
 for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files*.txt; do
     extract $BLOB_LIST "$SRC"

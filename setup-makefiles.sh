@@ -24,9 +24,9 @@ export INITIAL_COPYRIGHT_YEAR=2020
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-OMNI_ROOT="$MY_DIR"/../../..
+HAVOC_ROOT="$MY_DIR"/../../..
 
-HELPER="$OMNI_ROOT"/vendor/omni/build/tools/extract_utils.sh
+HELPER="$HAVOC_ROOT"/vendor/havoc/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -34,10 +34,10 @@ fi
 . "$HELPER"
 
 # Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$OMNI_ROOT" true
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$HAVOC_ROOT" true
 
 # Copyright headers and common guards
-write_headers "rog3 zenfone7"
+write_headers "rog3 I002D"
 
 write_makefiles "$MY_DIR"/proprietary-files.txt
 write_makefiles "$MY_DIR"/proprietary-files-product.txt
@@ -45,7 +45,7 @@ write_makefiles "$MY_DIR"/proprietary-files-product.txt
 write_footers
 
 # Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$OMNI_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$HAVOC_ROOT"
 
 # Copyright headers and guards
 write_headers
