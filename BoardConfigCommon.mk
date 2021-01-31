@@ -165,7 +165,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
 # Sepolicy
-include vendor/omni/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/SEPolicy.mk
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private

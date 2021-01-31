@@ -178,5 +178,3 @@ PRODUCT_TARGET_VNDK_VERSION := 29
 # WiFi Display
 PRODUCT_PACKAGES += \
     libnl
-
-include vendor/qcom/opensource/display-commonsys-intf/config/display-product-system.mk
