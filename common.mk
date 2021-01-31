@@ -63,9 +63,6 @@ PRODUCT_PACKAGES += \
     AntHalService
 
 # Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/qcom/opensource/commonsys-intf/bluetooth/overlay/qva
 
 PRODUCT_PACKAGES += BluetoothExt
