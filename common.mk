@@ -29,8 +29,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    vendor/omni/overlay/CarrierConfig
+    $(LOCAL_PATH)/overlay
 
 # A/B
 AB_OTA_UPDATER := true
@@ -46,12 +45,9 @@ AB_OTA_PARTITIONS += \
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/omnipreopt_script \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-
-PRODUCT_PACKAGES += \
-    omnipreopt_script
 
 # tell update_engine to not change dynamic partition table during updates
 # needed since our qti_dynamic_partitions does not include
@@ -75,14 +71,8 @@ PRODUCT_COPY_FILES += \
 
 # Charger images
 PRODUCT_PACKAGES += \
-    omni_charger_res_images \
     animation.txt \
     font_charger.png
-
-# DeviceParts
-PRODUCT_PACKAGES += \
-    DeviceParts \
-    OmniDisplayManager
 
 # Display
 PRODUCT_PACKAGES += \
