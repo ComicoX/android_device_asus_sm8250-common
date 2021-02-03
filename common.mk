@@ -76,6 +76,10 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    libdisplayconfig \	
+    libqdMetaData \	
+    libqdMetaData.system \
+    vendor.display.config@1.12 \
     libion \
     libtinyxml2
 

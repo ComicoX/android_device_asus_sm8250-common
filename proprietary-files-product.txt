@@ -32,6 +32,12 @@ product/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 product/lib64/vendor.qti.hardware.scve.panorama@1.0.so
 product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
+# Display api	
+product/lib/libsdm-disp-apis.qti.so	
+product/lib/vendor.qti.hardware.qdutils_disp@1.0.so	
+product/lib64/libsdm-disp-apis.qti.so	
+product/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+
 # QTI Telephony
 -product/app/embms/embms.apk
 -product/app/datastatusnotification/datastatusnotification.apk
