@@ -76,8 +76,8 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libdisplayconfig \	
-    libqdMetaData \	
+    libdisplayconfig \
+    libqdMetaData \
     libqdMetaData.system \
     vendor.display.config@1.12 \
     libion \
