@@ -1,14 +1,12 @@
 #!/bin/bash
 #
-# Copyright (C) 2016 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
-#           (C) 2018 The Omnirom Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,32 +14,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-set -e
 
-export INITIAL_COPYRIGHT_YEAR=2020
+set -e
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-HAVOC_ROOT="$MY_DIR"/../../..
+HAVOC_ROOT="${MY_DIR}/../../.."
 
-HELPER="$HAVOC_ROOT/tools/extract-utils/extract_utils.sh"
-if [ ! -f "$HELPER" ]; then
-    echo "Unable to find helper script at $HELPER"
+HELPER="${HAVOC_ROOT}/tools/extract-utils/extract_utils.sh"
+if [ ! -f "${HELPER}" ]; then
+    echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
-. "$HELPER"
+source "${HELPER}"
 
-# Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$HAVOC_ROOT" true
+# Initialize the helper for common
+setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${HAVOC_ROOT}" true
 
-# Copyright headers and common guards
-write_headers "rog3 I002D"
+# Copyright headers and guards
+write_headers "obiwan I002D"
 
-write_makefiles "$MY_DIR"/proprietary-files.txt
-write_makefiles "$MY_DIR"/proprietary-files-product.txt
+# The standard common blobs
+write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
+# Finish
 write_footers
 
 # Reinitialize the helper for device
