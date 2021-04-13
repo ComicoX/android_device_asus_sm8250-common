@@ -19,66 +19,43 @@ set -e
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-HAVOC_ROOT="${MY_DIR}"/../../..
+HAVOC_ROOT="$MY_DIR"/../../..
 
 HELPER="${HAVOC_ROOT}/tools/extract-utils/extract_utils.sh"
-if [ ! -f "${HELPER}" ]; then
-    echo "Unable to find helper script at ${HELPER}"
+if [ ! -f "$HELPER" ]; then
+    echo "Unable to find helper script at $HELPER"
     exit 1
 fi
-source "${HELPER}"
+. "$HELPER"
 
-function blob_fixup() {
-    case "${1}" in
-        etc/permissions/qti_libpermissions.xml)
-            sed -i 's/<library name="android.hidl.manager-V1.0-java"/<library name="android.hidl.manager@1.0-java"/g' "${2}"
-            ;;
-    esac
-}
-
-# Default to sanitizing the vendor folder before extraction
-CLEAN_VENDOR=true
-
-SECTION=
-KANG=
-
-while [ "${#}" -gt 0 ]; do
-    case "${1}" in
-        -n | --no-cleanup )
-                CLEAN_VENDOR=false
-                ;;
-        -k | --kang )
-                KANG="--kang"
-                ;;
-        -s | --section )
-                SECTION="${2}"; shift
-                CLEAN_VENDOR=false
-                ;;
-        * )
-                SRC="${1}"
-                ;;
-    esac
-    shift
-done
-
-if [ -z "${SRC}" ]; then
-    SRC="adb"
+if [ $# -eq 0 ]; then
+    SRC=adb
+else
+    if [ $# -eq 1 ]; then
+        SRC=$1
+    else
+        echo "$0: bad number of arguments"
+        echo ""
+        echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
+        echo ""
+        echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
+        echo "the device using adb pull."
+        exit 1
+    fi
 fi
 
 # Initialize the helper for common device
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${HAVOC_ROOT}" true "${CLEAN_VENDOR}"
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$HAVOC_ROOT" true
 
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
-        "${KANG}" --section "${SECTION}"
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
 # Reinitialize the helper for device
-source "${MY_DIR}/../${DEVICE}/extract-files.sh"
-setup_vendor "${DEVICE}" "${VENDOR}" "${HAVOC_ROOT}" false "${CLEAN_VENDOR}"
-for BLOB_LIST in "${MY_DIR}"/../"${DEVICE}"/proprietary-files*.txt; do
-    extract "${BLOB_LIST}" "${SRC}" \
-            "${KANG}" --section "${SECTION}"
+setup_vendor "$DEVICE" "$VENDOR" "$HAVOC_ROOT"
+
+for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files*.txt; do
+    extract $BLOB_LIST "$SRC"
 done
 
-"${MY_DIR}/setup-makefiles.sh"
+"$MY_DIR"/setup-makefiles.sh
