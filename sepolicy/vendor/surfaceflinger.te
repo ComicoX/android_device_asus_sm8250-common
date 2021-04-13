@@ -1,1 +1,0 @@
-allow surfaceflinger asus_display_proc_exec:file { read write getattr open };
