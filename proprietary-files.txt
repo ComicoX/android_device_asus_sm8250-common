@@ -1,6 +1,4 @@
 # ANT+
--lib/libantradio.so
--lib64/libantradio.so
 system_ext/lib/com.qualcomm.qti.ant@1.0.so
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
@@ -8,31 +6,30 @@ system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 -app/aptxals/aptxals.apk
 
 # Camera
-system_ext/lib64/DataSet/arch/DIT_List.cfg
-system_ext/lib64/DataSet/ditSCidGen/msgchk.db
-system_ext/lib64/DataSet/ispDB/ParameterDB.db
-system_ext/lib64/libAsusRGBSensorHAL.so
-system_ext/lib64/libarcsoft_beautyshot.so
-system_ext/lib64/libarcsoft_bokehplus_image.so
-system_ext/lib64/libarcsoft_bokehplus_video.so
-system_ext/lib64/libarcsoft_dualcam_refocus.so
-system_ext/lib64/libarcsoft_face_detection.so
-system_ext/lib64/libarcsoft_face_tracking.so
-system_ext/lib64/libarcsoft_hdr.so
-system_ext/lib64/libarcsoft_low_light_shot.so
-system_ext/lib64/libarcsoft_nighthawk.so
-system_ext/lib64/libarcsoft_picselfie_algorithm.so
-system_ext/lib64/libarcsoft_piczoom.so
-system_ext/lib64/libarcsoft_rer.so
-system_ext/lib64/libarcsoft_superresolution.so
-system_ext/lib64/libmpbase.so
-system_ext/lib64/libxditk_DIT_MSMv1.so
-system_ext/lib64/libxditk_DIT_Manager.so
-system_ext/lib64/libxditk_ISP.so
-system_ext/lib64/libxditk_arch.so
-system_ext/lib64/libxditk_ditArchLIB.so
-system_ext/lib64/libxditk_ditBSP.so
-system_ext/lib64/libxditk_ditBSP_JNI.so
+system/lib64/DataSet/arch/DIT_List.cfg
+system/lib64/DataSet/ditSCidGen/msgchk.db
+system/lib64/DataSet/ispDB/ParameterDB.db
+system/lib64/libAsusRGBSensorHAL.so
+system/lib64/libarcsoft_beautyshot.so
+system/lib64/libarcsoft_bokehplus_image.so
+system/lib64/libarcsoft_bokehplus_video.so
+system/lib64/libarcsoft_dualcam_refocus.so
+system/lib64/libarcsoft_face_detection.so
+system/lib64/libarcsoft_face_tracking.so
+system/lib64/libarcsoft_hdr.so
+system/lib64/libarcsoft_low_light_shot.so
+system/lib64/libarcsoft_nighthawk.so
+system/lib64/libarcsoft_piczoom.so
+system/lib64/libarcsoft_rer.so
+system/lib64/libarcsoft_superresolution.so
+system/lib64/libmpbase.so
+system/lib64/libxditk_DIT_MSMv1.so
+system/lib64/libxditk_DIT_Manager.so
+system/lib64/libxditk_ISP.so
+system/lib64/libxditk_arch.so
+system/lib64/libxditk_ditArchLIB.so
+system/lib64/libxditk_ditBSP.so
+system/lib64/libxditk_ditBSP_JNI.so
 
 # DPM
 system_ext/bin/dpmd
@@ -59,7 +56,7 @@ system_ext/lib64/libdpmtcm.so
 -system_ext/app/DeviceStatisticsService/DeviceStatisticsService.apk
 
 # Display
-system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml
+product/etc/permissions/com.qti.snapdragon.sdk.display.xml
 -system_ext/app/colorservice/colorservice.apk
 system_ext/lib64/vendor.display.color@1.0.so
 system_ext/lib64/vendor.display.color@1.1.so
@@ -72,7 +69,7 @@ system_ext/etc/permissions/com.qualcomm.location.xml
 system_ext/etc/permissions/izat.xt.srv.xml
 system_ext/etc/permissions/privapp-permissions-com.qualcomm.location.xml
 system_ext/framework/izat.xt.srv.jar
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
+-product/priv-app/com.qualcomm.location/com.qualcomm.location.apk
 system_ext/lib64/vendor.qti.gnss@1.0.so
 system_ext/lib64/vendor.qti.gnss@1.1.so
 system_ext/lib64/vendor.qti.gnss@1.2.so
@@ -81,8 +78,8 @@ system_ext/lib64/vendor.qti.gnss@2.1.so
 system_ext/lib64/vendor.qti.gnss@3.0.so
 
 # Hotword Enrollment
--system_ext/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
--system_ext/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
+-product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
+-product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
 
 # IMS
 system_ext/lib64/com.qualcomm.qti.imscmservice@1.0.so
@@ -103,13 +100,11 @@ system_ext/lib64/vendor.qti.hardware.radio.ims@1.4.so
 system_ext/lib64/vendor.qti.ims.callinfo@1.0.so
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.1.so
-system_ext/lib64/vendor.qti.imsrtpservice@2.0.so
-system_ext/lib64/vendor.qti.imsrtpservice@2.1.so
 # Smali edit: https://gist.github.com/luca020400/b0152c9b77e55f50eee0513cf666f61c
 -system_ext/priv-app/ims/ims.apk|d634dda735bc1e462be20cc8608a4b2da00b4a4a
 
 # Power Off Alarm
--system_ext/app/PowerOffAlarm/PowerOffAlarm.apk
+-product/app/PowerOffAlarm/PowerOffAlarm.apk
 
 # Public libraries
 system_ext/etc/public.libraries-qti.txt
@@ -133,20 +128,18 @@ system_ext/lib64/vendor.qti.hardware.embmssl@1.0-adapter-helper.so
 system_ext/lib64/libsystemhelper_jni.so
 
 # Telephony
-system_ext/etc/permissions/privapp-permissions-qti.xml
+system/etc/permissions/privapp-permissions-qti.xml
 system_ext/etc/permissions/qti_libpermissions.xml
 system_ext/etc/permissions/qti_permissions.xml
-system_ext/etc/sysconfig/qti_whitelist.xml
+system/etc/sysconfig/qti_whitelist.xml
 -system_ext/app/DynamicDDSService/DynamicDDSService.apk
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 -system_ext/app/datastatusnotification/datastatusnotification.apk
--system_ext/app/embms/embms.apk
 -system_ext/app/xdivert/xdivert.apk
 system_ext/etc/permissions/embms-noship_product_privapp_permissions_qti.xml
 system_ext/etc/permissions/embms.xml
 system_ext/etc/permissions/qcrilhook.xml
-system_ext/etc/permissions/telephony_product_privapp-permissions-qti.xml
+product/etc/permissions/telephony_product_privapp-permissions-qti.xml
 system_ext/framework/qcrilhook.jar
 system_ext/lib64/libdiag_system.so
--system_ext/priv-app/QAS_DVC_MSP/QAS_DVC_MSP.apk
 -system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
