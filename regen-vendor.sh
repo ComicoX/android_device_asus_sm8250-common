@@ -672,6 +672,8 @@ function as_module() {
 
 presign "app/TimeService/TimeService.apk"
 presign "app/TrustZoneAccessService/TrustZoneAccessService.apk"
+as_module "lib64/libfastcvopt.so"
+as_module "lib/libfastcvopt.so"
 as_module "lib64/libthermalclient.so"
 as_module "lib/libthermalclient.so"
 as_module "lib64/libplatformconfig.so"
