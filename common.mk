@@ -66,14 +66,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-# Common init scripts
-PRODUCT_PACKAGES += \
-    init.asus.usb.rc \
-    init.qcom.factory.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    fstab.qcom
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
