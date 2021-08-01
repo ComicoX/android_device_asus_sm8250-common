@@ -60,11 +60,8 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-impl.recovery \
-    android.hardware.boot@1.0-service \
-    bootctrl.kona.recovery \
-    bootctrl.kona
+    android.hardware.boot@1.1-impl.recovery \
+    bootctrl.kona.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -121,8 +118,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vndk_package
 
+# HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
+    libhidltransport \
+    libhwbinder
+
+PRODUCT_BOOT_JARS += android.hidl.manager-V1.0-java
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
