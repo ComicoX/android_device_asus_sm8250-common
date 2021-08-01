@@ -31,27 +31,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
-# Properties
-PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
-
 # A/B
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
-    odm \
     product \
-    recovery \
     system \
+    system_ext \
     vbmeta \
-    vbmeta_system \
-    vendor
+    vbmeta_system
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -144,7 +134,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/product,product) \
     $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/root,root)
+    $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/system_ext,system_ext)
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -224,11 +214,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Vibrator
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/excluded-input-devices.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/excluded-input-devices.xml
+    $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
-# VNDK
-PRODUCT_PACKAGES += \
-    libgui_vendor
 
 # Wifi
 PRODUCT_PACKAGES += \
