@@ -114,6 +114,7 @@ PRODUCT_BOOT_JARS += android.hidl.manager-V1.0-java
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
     RemovePackages
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
@@ -121,6 +122,10 @@ PRODUCT_SOONG_NAMESPACES += \
 # Systemhelper
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.systemhelper@1.0
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default
 
 # Telephony
 PRODUCT_PACKAGES += \
