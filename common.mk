@@ -59,6 +59,9 @@ PRODUCT_PACKAGES += BluetoothExt
 PRODUCT_PACKAGES += libbluetooth_qti
 PRODUCT_PACKAGES += vendor.qti.hardware.bluetooth_dun-V1.0-java
 
+PRODUCT_PACKAGES += \
+    BluetoothQti
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl.recovery \
