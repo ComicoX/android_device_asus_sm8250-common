@@ -83,6 +83,41 @@ PRODUCT_PACKAGES += \
     libion \
     libtinyxml2
 
+# Display
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.mapper@3.0-impl-qti-display \
+    vendor.qti.hardware.display.allocator-service \
+    vendor.qti.hardware.display.composer-service \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    gralloc.kona \
+    memtrack.kona \
+    libqdMetaData \
+    libdisplayconfig.vendor \
+    libdisplayconfig.vendor \
+    vendor.display.config@1.0.vendor \
+    vendor.display.config@1.1.vendor \
+    vendor.display.config@1.2.vendor \
+    vendor.display.config@1.3.vendor \
+    vendor.display.config@1.4.vendor \
+    vendor.display.config@1.5.vendor \
+    vendor.display.config@1.6.vendor \
+    vendor.display.config@1.7.vendor \
+    vendor.display.config@1.8.vendor \
+    vendor.display.config@1.9.vendor \
+    vendor.display.config@1.10.vendor \
+    vendor.display.config@1.11.vendor \
+    vendor.display.config@1.12.vendor \
+    vendor.display.config@1.13.vendor \
+    vendor.display.config@1.14.vendor \
+    vendor.display.config@1.15.vendor \
+    vendor.qti.hardware.display.mapper@1.0.vendor \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0.vendor
+
+PRODUCT_PACKAGES += \
+    vendor.display.config@1.12
+
 PRODUCT_PACKAGES += \
     libtinyalsa
 
@@ -179,6 +214,18 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bluetooth.a2dp_offload.disabled=false \
+    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
+    persist.vendor.bt.aac_frm_ctl.enabled=true \
+    persist.vendor.bt.enable.splita2dp=true \
+    persist.vendor.qcom.bluetooth.enable.splita2dp=true \
+    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
+    ro.bluetooth.a2dp_offload.supported=true \
+    vendor.bluetooth.soc=cherokee \
+    vendor.qcom.bluetooth.soc=cherokee
 
 # Wifi
 PRODUCT_PACKAGES += \
